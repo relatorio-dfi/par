@@ -78,9 +78,9 @@ $( document ).ready(function() {
       $('#nomeDano').html(`<b>${item.TIPO_DE_DANO}</b>`)
       $('#nomeCriticidade').html(criticidade)
       $('#nomeDataOrigem').html(`<b>${item.DATA_ORIGEM}</b>`)
-      $('#nomeStatus').html(`<b>${item.statusDFI}</b>`)
+      $('#nomeStatus').html(`<b>${item.statusDFI}</b> <small class="text-muted">(atualizado em ${item.updated_at})</small>`)
       if(item.foto != null && item.visivelFoto == 1){
-        $('#fotoEmp').html(`<img class="m-auto imagemFoto" src='data:image/png;base64, ${item.foto}'/>`)
+        $('#fotoEmp').html(`<img class="imagemFoto" src='data:image/png;base64, ${item.foto}'/>`)
       }else{
         $('#fotoEmp').html(`<small class="text-muted">Não há fotos.</small>`)
       }
@@ -113,7 +113,7 @@ $( document ).ready(function() {
               <p class="card-text">Data da Publicação: <b>${dataPublicacaoFormatada}</b></p>
               <p class="card-text">Detalhamento: </p>
               <div>
-                ${item.observacao}
+                ${(item.observacao != null ? $.parseHTML(item.observacao) : 'Não há')}
               </div>
             </div>
           </div>
@@ -136,9 +136,9 @@ $( document ).ready(function() {
 
         var cardHistorico = 
         `
-        <div class="card">
+        <div class="card mb-1">
           <div class="card-header">
-            <p>Criado em: <b>${dataPublicacaoFormatada}</b></p>
+            Criado em: <b>${dataPublicacaoFormatada}</b> por <b>${item.matriculaCriacao}</b>
           </div>
           <div class="card-body">
             ${item.observacao}
