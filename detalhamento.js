@@ -93,8 +93,12 @@ $( document ).ready(function() {
     if (idDados == id){
       if(item.visivel == 1){
         var dataPublic = item.dataPublicacao
-        var dataPublicacaoFormat = dataPublic.split("-")
-        var dataPublicacaoFormatada = dataPublicacaoFormat[2] + '/' + dataPublicacaoFormat[1] + '/' + dataPublicacaoFormat[0]
+        if(dataPublic != null){
+          var dataPublicacaoFormat = dataPublic.split("-")
+          var dataPublicacaoFormatada = dataPublicacaoFormat[2] + '/' + dataPublicacaoFormat[1] + '/' + dataPublicacaoFormat[0]
+        }else{
+          var dataPublicacaoFormatada = 'Não há'
+        }
 
         var cardImprensa = 
         `
@@ -103,9 +107,9 @@ $( document ).ready(function() {
               <p class="card-text">Imprensa</p>
             </div>
             <div class="card-body">
-              <p class="card-text">Tipo de Imprensa: <b>${item.tipoImprensa}</b></p>
-              <p class="card-text">Abrangencia: <b>${item.abrangencia}</b></p>
-              <p class="card-text">Veículo de Informação: <b>${item.veiculoInformacao}</b></p>
+              <p class="card-text">Tipo de Imprensa: <b>${(item.tipoImprensa != null ? item.tipoImprensa : 'Não há')}</b></p>
+              <p class="card-text">Abrangencia: <b>${(item.abrangencia != null ? item.abrangencia : 'Não há')}</b></p>
+              <p class="card-text">Veículo de Informação: <b>${(item.veiculoInformacao != null ? item.veiculoInformacao : 'Não há')}</b></p>
               <p class="card-text">Data da Publicação: <b>${dataPublicacaoFormatada}</b></p>
               <p class="card-text">Detalhamento: </p>
               <div>
