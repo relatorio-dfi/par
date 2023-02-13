@@ -96,7 +96,7 @@ $( document ).ready(function() {
     $(linha).appendTo('#tblImoveisPar>tbody');
   });
 
-  _datatableSoExcel('tblImoveisPar', '5', 'asc', 'imoveis_par_dfi', 10)
+  _datatableSoExcel('tblImoveisPar', '4', 'asc', 'imoveis_par_dfi', 10)
   $('.loadingPagina').css('display', 'none')
    
 })
