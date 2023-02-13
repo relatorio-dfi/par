@@ -113,7 +113,7 @@ $( document ).ready(function() {
               <p class="card-text">Data da Publicação: <b>${dataPublicacaoFormatada}</b></p>
               <p class="card-text">Detalhamento: </p>
               <div>
-                ${(item.observacao != null ? $.parseHTML(item.observacao) : 'Não há')}
+                ${(item.observacao != null ? item.observacao : 'Não há')}
               </div>
             </div>
           </div>
@@ -146,6 +146,21 @@ $( document ).ready(function() {
         </div>
         `
         $(cardHistorico).appendTo('#dadosHistorico');
+      }
+    }
+  });
+
+  sintese.forEach(function(item, index) {
+    let idDados = item.idDfi
+    if (idDados == id){
+      if(item.visivel == 1){
+        var cardSintese = 
+        `
+        <div class="card card-body mb-1">
+          ${item.observacao}
+        </div>
+        `
+        $(cardSintese).appendTo('#descritivoStatus');
       }
     }
   });
