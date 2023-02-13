@@ -82,9 +82,67 @@ $( document ).ready(function() {
       if(item.foto != null && item.visivelFoto == 1){
         $('#fotoEmp').html(`<img class="m-auto imagemFoto" src='data:image/png;base64, ${item.foto}'/>`)
       }else{
-        $('#fotoEmp').html(`<span class="text-muted">Não há fotos.</span>`)
+        $('#fotoEmp').html(`<small class="text-muted">Não há fotos.</small>`)
       }
       // $('#nomeUF').html(item.UF)
+    }
+  });
+
+  imprensa.forEach(function(item, index) {
+    let idDados = item.idDfi
+    if (idDados == id){
+      if(item.visivel == 1){
+        var dataPublic = item.dataPublicacao
+        var dataPublicacaoFormat = dataPublic.split("-")
+        var dataPublicacaoFormatada = dataPublicacaoFormat[2] + '/' + dataPublicacaoFormat[1] + '/' + dataPublicacaoFormat[0]
+
+        var cardImprensa = 
+        `
+          <div class="card mb-2">
+            <div class="card-header">
+              <p class="card-text">Imprensa</p>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Tipo de Imprensa: <b>${item.tipoImprensa}</b></p>
+              <p class="card-text">Abrangencia: <b>${item.abrangencia}</b></p>
+              <p class="card-text">Veículo de Informação: <b>${item.veiculoInformacao}</b></p>
+              <p class="card-text">Data da Publicação: <b>${dataPublicacaoFormatada}</b></p>
+              <p class="card-text">Detalhamento: </p>
+              <div>
+                ${item.observacao}
+              </div>
+            </div>
+          </div>
+        `
+        $(cardImprensa).appendTo('#dadosImprensa');
+      }
+    }
+    // else{
+    //   $('#semDadosImprensa').html(`: <span class="text-muted">Não há dados de Imprensa.</span>`)
+    // }
+  });
+
+  historico.forEach(function(item, index) {
+    let idDados = item.idDfi
+    if (idDados == id){
+      if(item.visivel == 'S'){
+        var dataPublic = item.created_at
+        var dataPublicacaoFormat = dataPublic.split("T")[0].split("-")
+        var dataPublicacaoFormatada = dataPublicacaoFormat[2] + '/' + dataPublicacaoFormat[1] + '/' + dataPublicacaoFormat[0]
+
+        var cardHistorico = 
+        `
+        <div class="card">
+          <div class="card-header">
+            <p>Criado em: <b>${dataPublicacaoFormatada}</b></p>
+          </div>
+          <div class="card-body">
+            ${item.observacao}
+          </div>
+        </div>
+        `
+        $(cardHistorico).appendTo('#dadosHistorico');
+      }
     }
   });
   
