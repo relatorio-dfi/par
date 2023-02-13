@@ -138,7 +138,7 @@ $( document ).ready(function() {
         `
         <div class="card mb-1">
           <div class="card-header">
-            Criado em: <b>${dataPublicacaoFormatada}</b> por <b>${item.matriculaCriacao}</b>
+            Criado em: <b>${dataPublicacaoFormatada}</b>
           </div>
           <div class="card-body">
             ${item.observacao}
@@ -154,6 +154,7 @@ $( document ).ready(function() {
     let idDados = item.idDfi
     if (idDados == id){
       if(item.visivel == 1){
+        $('#semDadosSintese').css('display','none')
         var cardSintese = 
         `
         <div class="card card-body mb-1">
