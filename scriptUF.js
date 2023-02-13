@@ -298,7 +298,6 @@ $( document ).ready(function() {
                     `<tr> 
                         <td class='${item.UF}'>${item.UF}</td> 
                         <td class='${item.UF}'>${item.CIDADE}</td> 
-                        <td class='${item.UF}'>ENDERECO</td> 
                         <td class='${item.UF}'>${item.EMPREENDIMENTO}</td> 
                         <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                         ${criticidade} 
@@ -357,7 +356,6 @@ $( document ).ready(function() {
                             `<tr> 
                                 <td class='${item.UF}'>${item.UF}</td> 
                                 <td class='${item.UF}'>${item.CIDADE}</td> 
-                                <td class='${item.UF}'>ENDERECO</td> 
                                 <td class='${item.UF}'>${item.EMPREENDIMENTO}</td> 
                                 <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade} 
@@ -407,7 +405,6 @@ $( document ).ready(function() {
                             `<tr> 
                                 <td class='${cidadeSemEspaco}'>${item.UF}</td> 
                                 <td class='${cidadeSemEspaco}'>${item.CIDADE}</td> 
-                                <td class='${cidadeSemEspaco}'>ENDERECO</td> 
                                 <td class='${cidadeSemEspaco}'>${item.EMPREENDIMENTO}</td> 
                                 <td class='${cidadeSemEspaco}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade} 
@@ -472,7 +469,6 @@ $( document ).ready(function() {
                     `<tr> 
                         <td class='${empreendimentoSemEspaco}'>${item.UF}</td> 
                         <td class='${empreendimentoSemEspaco}'>${item.CIDADE}</td> 
-                        <td class='${empreendimentoSemEspaco}'>ENDERECO</td> 
                         <td class='${empreendimentoSemEspaco}'>${item.EMPREENDIMENTO}</td> 
                         <td class='${empreendimentoSemEspaco}'>${item.TIPO_DE_DANO}</td> 
                         ${criticidade} 

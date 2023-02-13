@@ -79,7 +79,11 @@ $( document ).ready(function() {
       $('#nomeCriticidade').html(criticidade)
       $('#nomeDataOrigem').html(`<b>${item.DATA_ORIGEM}</b>`)
       $('#nomeStatus').html(`<b>${item.statusDFI}</b>`)
-      // $('#nomeUF').html(item.UF)
+      if(item.foto != null && item.visivelFoto == 1){
+        $('#fotoEmp').html(`<img class="m-auto imagemFoto" src='data:image/png;base64, ${item.foto}'/>`)
+      }else{
+        $('#fotoEmp').html(`<span class="text-muted">Não há fotos.</span>`)
+      }
       // $('#nomeUF').html(item.UF)
     }
   });

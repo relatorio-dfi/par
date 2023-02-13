@@ -80,7 +80,6 @@ $( document ).ready(function() {
         <tr> 
           <td>${item.UF}</td> 
           <td>${item.CIDADE}</td> 
-          <td>ENDERECO</td> 
           <td>${item.EMPREENDIMENTO}</td> 
           <td>${item.TIPO_DE_DANO}</td> 
           ${criticidade} 

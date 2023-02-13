@@ -204,6 +204,10 @@ table,
   margin-top: 20px;
 }
 
+td{
+  font-size: 80%;
+}
+
 @media only screen and (max-width: 760px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
   .edital{
@@ -252,29 +256,35 @@ table,
   }
 
   td:nth-of-type(1):before {
-    content: "";
+    content: "UF: ";
   }
   td:nth-of-type(2):before {
-    content: "";
+    content: "Cidade: ";
   }
   td:nth-of-type(3):before {
     content: "";
   }
-  td:nth-of-type(5):before {
+  td:nth-of-type(4):before {
     content: "Dano: ";
   }
-  td:nth-of-type(6):before {
+  td:nth-of-type(5):before {
     content: "Criticidade: ";
   }
-  td:nth-of-type(7):before {
+  td:nth-of-type(6):before {
     content: "Data Origem: ";
   }
-  td:nth-of-type(8):before {
+  td:nth-of-type(7):before {
     content: "Última Atualização: ";
+  }
+  td:nth-of-type(8):before {
+    content: "Status Atual: ";
   }
 
   .textoMobile{
     font-size: small;
   }
 
+  .imagemFoto{
+    width: 100%;
+  }
 }
