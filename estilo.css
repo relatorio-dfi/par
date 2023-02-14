@@ -275,13 +275,19 @@ td{
     content: "Criticidade: ";
   }
   td:nth-of-type(6):before {
-    content: "Data Origem: ";
+    content: "Possui Demanda de Imprensa? ";
   }
   td:nth-of-type(7):before {
-    content: "Última Atualização: ";
+    content: "Data Origem: ";
   }
   td:nth-of-type(8):before {
-    content: "Status Atual: ";
+    content: "Última Atualização: ";
+  }
+  td:nth-of-type(9):before {
+    content: "Status: ";
+  }
+  td:nth-of-type(10):before {
+    content: "Prazo Previsto para Conclusão: ";
   }
 
   .textoMobile{
