@@ -234,11 +234,8 @@ $( document ).ready(function() {
 
             empreendimentos.forEach(function(valores, index){
                 var opcao = 
-                // `
-                //     <option value="${valores.idDfi}">${valores.EMPREENDIMENTO}</option>
-                // `
                 `
-                <option value="${valores.idDfi}" label="${valores.EMPREENDIMENTO}"></option>
+                <option value="${valores.EMPREENDIMENTO}" id="${valores.idDfi}">${valores.EMPREENDIMENTO}</option>
                 `
                 $(opcao).appendTo('#selectEmpreendimentos');
             })
@@ -429,18 +426,18 @@ $( document ).ready(function() {
 
             input.addEventListener("change",(e)=>{
         
-                let search = input.value.replace("-","")
-            //     const options = {
-            //         method: 'GET',
-            //         mode: 'cors',
-            //         cache: 'default'
-            //     }
+                let search = $("#inputEmpreendimentos").val()
+              
+                let selectId = $("#selectEmpreendimentos option").filter(function(){
+                    return $(this).val() === search
+                }).attr('id')
+            
             // $(document).on('change', '#selectEmpreendimentos', function(){
 
                 $('#tblDadosUF').DataTable().clear().destroy();
                 
                 // var empreendimentoEscolhido = $(this).val()
-                var empreendimentoEscolhido = search
+                var empreendimentoEscolhido = selectId
 
                 grupo.forEach(function(item, index){
                 // dados.forEach(function(item, index){
