@@ -234,16 +234,19 @@ $( document ).ready(function() {
 
             empreendimentos.forEach(function(valores, index){
                 var opcao = 
+                // `
+                //     <option value="${valores.idDfi}">${valores.EMPREENDIMENTO}</option>
+                // `
                 `
-                    <option value="${valores.idDfi}">${valores.EMPREENDIMENTO}</option>
+                <option value="${valores.idDfi}" label="${valores.EMPREENDIMENTO}"></option>
                 `
-                $(opcao).appendTo('#selectEmprendimentos');
+                $(opcao).appendTo('#selectEmpreendimentos');
             })
 
-            ordenarSelect('selectEmprendimentos')
+            ordenarSelect('selectEmpreendimentos')
 
             var opcaoDisabled = `<option disabled selected>Selecione a Empreendimento</option>`
-            $(opcaoDisabled).appendTo('#selectEmprendimentos');
+            $(opcaoDisabled).appendTo('#selectEmpreendimentos');
             // FIM SELECT EMPREENDIMENTOS
 
             $(document).on('change', '#selectEstado', function(){
@@ -422,51 +425,61 @@ $( document ).ready(function() {
                 });
             })
 
-            $(document).on('change', '#selectEmprendimentos', function(){
+            var input = document.querySelector("#inputEmpreendimentos")
+
+            input.addEventListener("change",(e)=>{
+        
+                let search = input.value.replace("-","")
+            //     const options = {
+            //         method: 'GET',
+            //         mode: 'cors',
+            //         cache: 'default'
+            //     }
+            // $(document).on('change', '#selectEmpreendimentos', function(){
 
                 $('#tblDadosUF').DataTable().clear().destroy();
                 
-                var empreendimentoEscolhido = $(this).val()
+                // var empreendimentoEscolhido = $(this).val()
+                var empreendimentoEscolhido = search
 
                 grupo.forEach(function(item, index){
                 // dados.forEach(function(item, index){
                     
                     var empreendimentoBancoDados = item.idDfi
-                    var empreendimentoSemEspaco = empreendimentoBancoDados.replace(/\s/g, '');
 
-                    if (empreendimentoEscolhido == empreendimentoSemEspaco){
+                    if (empreendimentoEscolhido == empreendimentoBancoDados){
 
                         $('#dadosUF').css('display','block');
                         switch(item.PRIORIDADE){
                             case 'PRIORITARIO':
-                                var criticidade = `<td class='${empreendimentoSemEspaco} grauCriticidade' data-order="0" style="color:red; font-weight: bold;">${item.PRIORIDADE}</td>`
+                                var criticidade = `<td class='${empreendimentoBancoDados} grauCriticidade' data-order="0" style="color:red; font-weight: bold;">${item.PRIORIDADE}</td>`
                                 break;
                             case 'ALTO':
-                                var criticidade = `<td class='${empreendimentoSemEspaco} grauCriticidade' data-order="1" style="color:red; font-weight: bold;">${item.PRIORIDADE}</td>`
+                                var criticidade = `<td class='${empreendimentoBancoDados} grauCriticidade' data-order="1" style="color:red; font-weight: bold;">${item.PRIORIDADE}</td>`
                                 break;
                             case 'MODERADO':
-                                var criticidade = `<td class='${empreendimentoSemEspaco} grauCriticidade' data-order="2" style="color:orange; font-weight: bold;">${item.PRIORIDADE}</td>`
+                                var criticidade = `<td class='${empreendimentoBancoDados} grauCriticidade' data-order="2" style="color:orange; font-weight: bold;">${item.PRIORIDADE}</td>`
                                 break;
                             case 'BAIXO':
-                                var criticidade = `<td class='${empreendimentoSemEspaco} grauCriticidade' data-order="3" style="color:green; font-weight: bold;">${item.PRIORIDADE}</td>`
+                                var criticidade = `<td class='${empreendimentoBancoDados} grauCriticidade' data-order="3" style="color:green; font-weight: bold;">${item.PRIORIDADE}</td>`
                                 break;
                             default:
-                                var criticidade = `<td class='${empreendimentoSemEspaco} grauCriticidade' data-order="4" style="font-weight: bold;">${item.PRIORIDADE}</td>`
+                                var criticidade = `<td class='${empreendimentoBancoDados} grauCriticidade' data-order="4" style="font-weight: bold;">${item.PRIORIDADE}</td>`
                             }
 
                         var linha =
                             `<tr> 
-                                <td class='${empreendimentoSemEspaco}'>${item.UF}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${item.CIDADE}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${item.EMPREENDIMENTO}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${item.TIPO_DE_DANO}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.UF}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.CIDADE}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.EMPREENDIMENTO}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade} 
-                                <td class='${empreendimentoSemEspaco}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
-                                <td class='${empreendimentoSemEspaco}'>${item.DATA_ORIGEM}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${item.updated_at}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${item.statusDFI}</td> 
-                                <td class='${empreendimentoSemEspaco}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
-                                <td class='${empreendimentoSemEspaco}'>
+                                <td class='${empreendimentoBancoDados}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
+                                <td class='${empreendimentoBancoDados}'>${item.DATA_ORIGEM}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.updated_at}</td> 
+                                <td class='${empreendimentoBancoDados}'>${item.statusDFI}</td> 
+                                <td class='${empreendimentoBancoDados}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+                                <td class='${empreendimentoBancoDados}'>
                                     <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
                                 </td>
                             </tr>`;
@@ -474,7 +487,7 @@ $( document ).ready(function() {
                         $(linha).appendTo('#tblDadosUF>tbody');
                     
                     } else{
-                        $('.'+empreendimentoSemEspaco).remove();
+                        $('.'+empreendimentoBancoDados).remove();
                     }
                 
                 });

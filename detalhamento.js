@@ -110,6 +110,7 @@ $( document ).ready(function() {
         }
       });
     });
+    $('.loadingPagina').css('display', 'none')
   });
 
   let databaseImprensa = firebase.database();
@@ -183,7 +184,7 @@ $( document ).ready(function() {
   //   }
   // });
   
-  $('.loadingPagina').css('display', 'none')
+  // $('.loadingPagina').css('display', 'none')
 
 })
  
