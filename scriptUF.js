@@ -188,6 +188,14 @@ $( document ).ready(function() {
         
         Object.values(dados).forEach(function(grupo){
 
+            let atualizacao = $.grep(grupo, function(dado){
+                return dado
+            })[0]
+            let timestamp = atualizacao.dataAtualizacao
+            let data = new Date(timestamp)
+            let data_formatada = data.toLocaleString("pt-BR")
+            $('#dataAtualizacaoRelatorio').html(data_formatada+' hs');
+
             function uniqueByKey(grupo, key) {
                 return [...new Map(grupo.map((x) => [x[key], x])).values()];
             }

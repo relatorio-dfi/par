@@ -302,4 +302,8 @@ td{
   .imagemFoto{
     width: 100%;
   }
+
+  .dataAtualizacaoPagina{
+    font-size: 60%;
+  }
 }
