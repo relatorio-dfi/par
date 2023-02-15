@@ -43,6 +43,7 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
 }
 
 $( document ).ready(function() {
+  $('.collapse').collapse()
   $('.loadingPagina').css('display', 'block')
   
   const params = new URLSearchParams(window.location.search)
@@ -93,7 +94,7 @@ $( document ).ready(function() {
           $('#nomeCriticidade').html(criticidade)
           $('#nomeDataOrigem').html(`<b>${item.DATA_ORIGEM}</b>`)
           $('#possuiAuxAluguel').html(`<b>${(item.AUXILIO_ALUGUEL == 'N' ? 'NÃO' : 'SIM')}</b>`)
-          $('#possuiImprensa').html(`<b>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</b>`)
+          $('#possuiImprensa').html(`<b>${(item.Imprensa == 1 ? 'SIM <button class="ml-3 btn btn-primary btn-sm" type="button" onclick="verDadosImprensa()" id="botaoDetalhesImprensa">Detalhes <i class="fas fa-chevron-down"></i></button>' : 'NÃO')}</b>`)
           
           $('#nomeStatus').html(`<b>${item.statusDFI}</b> <small class="text-muted">(atualizado em ${item.updated_at})</small>`)
           $('#prazoConclusao').html(`<b>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</b>`)
@@ -141,7 +142,7 @@ $( document ).ready(function() {
 
             var cardImprensa = 
             `
-              <div class="card mb-2">
+              <div class="card">
                 <div class="card-header">
                   <p class="card-text">Imprensa</p>
                 </div>
@@ -193,5 +194,11 @@ $( document ).ready(function() {
   
   // $('.loadingPagina').css('display', 'none')
 
+  
+
 })
- 
+
+function verDadosImprensa(){
+  $('#dadosImprensa').toggleClass('card-hidden')
+  $('#botaoDetalhesImprensa').find('i').toggleClass('fa-chevron-down fa-chevron-up')
+}

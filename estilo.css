@@ -118,6 +118,10 @@ header {
   background-color: #0072a7;
 }
 
+.card-hidden{
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .banner {
     height: 200px; /* altera a altura do banner para dispositivos menores */
