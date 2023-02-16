@@ -28,7 +28,13 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
       }
     },
     "columnDefs": [
-      { "type": 'numeric-comma', "targets": 5 }
+      { "type": 'numeric-comma', 
+        "targets": [6, 7, 9],
+        "render": function(data){
+          var dataOrdenada = ordenarData(data)
+          return dataOrdenada
+        }
+      }
     ],
     "dom": 'Bfrtip',
     "buttons": 
@@ -40,6 +46,15 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
         },
       ],
   });
+}
+
+function ordenarData(data){
+  var partes = data.split("/")
+  var dia = partes[0]
+  var mes = partes[1]
+  var ano = partes[2]
+  var dataOrdenacao = ano + mes + dia
+  return dataOrdenacao
 }
 
 $( document ).ready(function() {
@@ -85,10 +100,10 @@ $( document ).ready(function() {
               <td>${item.TIPO_DE_DANO}</td> 
               ${criticidade} 
               ${(item.Imprensa == 1 ? '<td data-order="0">SIM</td>' : '<td data-order="1">NÃO</td>')}</td> 
-              <td>${item.DATA_ORIGEM}</td> 
-              <td>${item.updated_at}</td> 
+              <td data-order="${item.DATA_ORIGEM}">${item.DATA_ORIGEM}</td> 
+              <td data-order="${item.updated_at}">${item.updated_at}</td> 
               <td>${item.statusDFI}</td> 
-              <td>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+              <td data-order="${item.dataPrevistaConclusao}">${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
               <td>
                 <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
               </td>

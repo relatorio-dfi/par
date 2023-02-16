@@ -58,19 +58,35 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
         }
       },
       "columnDefs": [
-        { "type": 'numeric-comma', "targets": 5 }
+        { "type": 'numeric-comma', 
+        "targets": [6, 7, 9],
+        "render": function(data){
+          var dataOrdenada = ordenarData(data)
+          return dataOrdenada
+        }
+      }
+    ],
+    "dom": 'Bfrtip',
+    "buttons": 
+      [
+        {
+          extend: 'excel',
+          text: 'Gerar Excel',
+          title: tituloPlanilha, 
+        },
       ],
-      "dom": 'Bfrtip',
-      "buttons": 
-        [
-          {
-            extend: 'excel',
-            text: 'Gerar Excel',
-            title: tituloPlanilha, 
-          },
-        ],
-    });
+  });
 }
+
+function ordenarData(data){
+  var partes = data.split("/")
+  var dia = partes[0]
+  var mes = partes[1]
+  var ano = partes[2]
+  var dataOrdenacao = ano + mes + dia
+  return dataOrdenacao
+}
+
 
 $(document).on('change', '#busca', function(){
     switch($(this).val()){
@@ -300,10 +316,10 @@ $( document ).ready(function() {
                                 <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade} 
                                 ${(item.Imprensa == 1 ? `<td class="${item.UF}" data-order="0">SIM</td>` : `<td class="${item.UF}" data-order="1">NÃO</td>`)} 
-                                <td class='${item.UF}'>${item.DATA_ORIGEM}</td> 
-                                <td class='${item.UF}'>${item.updated_at}</td> 
+                                <td class='${item.UF}' data-order="${item.DATA_ORIGEM}">${item.DATA_ORIGEM}</td> 
+                                <td class='${item.UF}' data-order="${item.updated_at}">${item.updated_at}</td> 
                                 <td class='${item.UF}'>${item.statusDFI}</td> 
-                                <td class='${item.UF}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+                                <td class='${item.UF}' data-order="${item.dataPrevistaConclusao}">${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
                                 <td class='${item.UF}'>
                                     <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
                                 </td>
@@ -358,10 +374,10 @@ $( document ).ready(function() {
                                         <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                                         ${criticidade}
                                         ${(item.Imprensa == 1 ? `<td class="${item.UF}" data-order="0">SIM</td>` : `<td class="${item.UF}" data-order="1">NÃO</td>`)} 
-                                        <td class='${item.UF}'>${item.DATA_ORIGEM}</td> 
-                                        <td class='${item.UF}'>${item.updated_at}</td> 
+                                        <td class='${item.UF}' data-order="${item.DATA_ORIGEM}">${item.DATA_ORIGEM}</td> 
+                                        <td class='${item.UF}' data-order="${item.updated_at}">${item.updated_at}</td> 
                                         <td class='${item.UF}'>${item.statusDFI}</td> 
-                                        <td class='${item.UF}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+                                        <td class='${item.UF}' data-order="${item.dataPrevistaConclusao}">${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
                                         <td class='${item.UF}'>
                                             <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
                                         </td> 
@@ -405,10 +421,10 @@ $( document ).ready(function() {
                                         <td class='${cidadeSemEspaco}'>${item.TIPO_DE_DANO}</td> 
                                         ${criticidade}
                                         ${(item.Imprensa == 1 ? `<td class="${cidadeSemEspaco}" data-order="0">SIM</td>` : `<td class="${cidadeSemEspaco}" data-order="1">NÃO</td>`)} 
-                                        <td class='${cidadeSemEspaco}'>${item.DATA_ORIGEM}</td> 
-                                        <td class='${cidadeSemEspaco}'>${item.updated_at}</td> 
+                                        <td class='${cidadeSemEspaco}' data-order="${item.DATA_ORIGEM}">${item.DATA_ORIGEM}</td> 
+                                        <td class='${cidadeSemEspaco}' data-order="${item.updated_at}">${item.updated_at}</td> 
                                         <td class='${cidadeSemEspaco}'>${item.statusDFI}</td> 
-                                        <td class='${cidadeSemEspaco}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+                                        <td class='${cidadeSemEspaco}' data-order="${item.dataPrevistaConclusao}">${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
                                         <td class='${cidadeSemEspaco}'>
                                             <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
                                         </td>
@@ -478,10 +494,10 @@ $( document ).ready(function() {
                                 <td class='${empreendimentoBancoDados}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade}
                                 ${(item.Imprensa == 1 ? `<td class="${empreendimentoBancoDados}" data-order="0">SIM</td>` : `<td class="${empreendimentoBancoDados}" data-order="1">NÃO</td>`)} 
-                                <td class='${empreendimentoBancoDados}'>${item.DATA_ORIGEM}</td> 
-                                <td class='${empreendimentoBancoDados}'>${item.updated_at}</td> 
+                                <td class='${empreendimentoBancoDados}' data-order="${item.DATA_ORIGEM}">${item.DATA_ORIGEM}</td> 
+                                <td class='${empreendimentoBancoDados}' data-order="${item.updated_at}">${item.updated_at}</td> 
                                 <td class='${empreendimentoBancoDados}'>${item.statusDFI}</td> 
-                                <td class='${empreendimentoBancoDados}'>${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
+                                <td class='${empreendimentoBancoDados}' data-order="${item.dataPrevistaConclusao}">${(item.dataPrevistaConclusao != null ? item.dataPrevistaConclusao : 'a definir')}</td>
                                 <td class='${empreendimentoBancoDados}'>
                                     <a class="btn btn-primary btn-sm" href="empreendimento.html?id=${item.idDfi}" role="button">Detalhamento</a>
                                 </td>
