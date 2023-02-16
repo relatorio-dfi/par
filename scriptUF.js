@@ -87,7 +87,6 @@ function ordenarData(data){
   return dataOrdenacao
 }
 
-
 $(document).on('change', '#busca', function(){
     switch($(this).val()){
         case 'cidade':
@@ -196,6 +195,7 @@ $(document).on('change', '#busca', function(){
 // }
 
 $( document ).ready(function() {
+    $('html, body').animate({scrollTop:0}, 'slow')
     $('.loadingPagina').css('display', 'block')
 
     var database = firebase.database();

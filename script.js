@@ -58,6 +58,7 @@ function ordenarData(data){
 }
 
 $( document ).ready(function() {
+  $('html, body').animate({scrollTop:0}, 'slow')
   $('.loadingPagina').css('display', 'block')
   
   var database = firebase.database();

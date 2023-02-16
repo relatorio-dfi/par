@@ -43,7 +43,7 @@ function _datatableSoExcel (idTabela, ordenaColuna, ordenaForma, tituloPlanilha,
 }
 
 $( document ).ready(function() {
-  $('.collapse').collapse()
+  $('html, body').animate({scrollTop:0}, 'slow')
   $('.loadingPagina').css('display', 'block')
   
   const params = new URLSearchParams(window.location.search)
@@ -62,7 +62,6 @@ $( document ).ready(function() {
       $('#dataAtualizacaoRelatorio').html(atualizacao.dataAtualizacao);
       
       grupo.forEach(function(item){
-  // dados.forEach(function(item, index) {
         let idDados = item.idDfi
         if (idDados == id) {
           switch(item.PRIORIDADE){
@@ -116,7 +115,9 @@ $( document ).ready(function() {
         }
       });
     });
+    // $('#botaoMenuNavBar').trigger('click')
     $('.loadingPagina').css('display', 'none')
+
   });
 
   let databaseImprensa = firebase.database();
@@ -126,7 +127,6 @@ $( document ).ready(function() {
     Object.values(dadosImprensa).forEach(function(grupo){
       
       grupo.forEach(function(item){
-      // imprensa.forEach(function(item, index) {
         let idDados = item.idDfi
         if (idDados == id){
           if(item.visivel == 1){
@@ -159,9 +159,6 @@ $( document ).ready(function() {
             $(cardImprensa).appendTo('#dadosImprensa');
           }
         }
-        // else{
-        //   $('#semDadosImprensa').html(`: <span class="text-muted">Não há dados de Imprensa.</span>`)
-        // }
       });
     });
   });
@@ -191,9 +188,6 @@ $( document ).ready(function() {
   // });
   
   // $('.loadingPagina').css('display', 'none')
-
-  
-
 })
 
 function verDadosImprensa(){

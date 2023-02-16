@@ -208,6 +208,10 @@ table,
   margin-top: 20px;
 }
 
+th{
+  font-size: 85%;
+}
+
 td{
   font-size: 80%;
 }
