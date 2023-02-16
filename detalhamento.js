@@ -58,10 +58,8 @@ $( document ).ready(function() {
       let atualizacao = $.grep(grupo, function(dado){
         return dado
       })[0]
-      let timestamp = atualizacao.dataAtualizacao
-      let data = new Date(timestamp)
-      let data_formatada = data.toLocaleString("pt-BR")
-      $('#dataAtualizacaoRelatorio').html(data_formatada+' hs');
+
+      $('#dataAtualizacaoRelatorio').html(atualizacao.dataAtualizacao);
       
       grupo.forEach(function(item){
   // dados.forEach(function(item, index) {

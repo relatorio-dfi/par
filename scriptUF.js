@@ -191,10 +191,8 @@ $( document ).ready(function() {
             let atualizacao = $.grep(grupo, function(dado){
                 return dado
             })[0]
-            let timestamp = atualizacao.dataAtualizacao
-            let data = new Date(timestamp)
-            let data_formatada = data.toLocaleString("pt-BR")
-            $('#dataAtualizacaoRelatorio').html(data_formatada+' hs');
+
+            $('#dataAtualizacaoRelatorio').html(atualizacao.dataAtualizacao);
 
             function uniqueByKey(grupo, key) {
                 return [...new Map(grupo.map((x) => [x[key], x])).values()];
@@ -301,7 +299,7 @@ $( document ).ready(function() {
                                 <td class='${item.UF}'>${item.EMPREENDIMENTO}</td> 
                                 <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                                 ${criticidade} 
-                                <td class='${item.UF}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
+                                ${(item.Imprensa == 1 ? `<td class="${item.UF}" data-order="0">SIM</td>` : `<td class="${item.UF}" data-order="1">NÃO</td>`)} 
                                 <td class='${item.UF}'>${item.DATA_ORIGEM}</td> 
                                 <td class='${item.UF}'>${item.updated_at}</td> 
                                 <td class='${item.UF}'>${item.statusDFI}</td> 
@@ -359,7 +357,7 @@ $( document ).ready(function() {
                                         <td class='${item.UF}'>${item.EMPREENDIMENTO}</td> 
                                         <td class='${item.UF}'>${item.TIPO_DE_DANO}</td> 
                                         ${criticidade}
-                                        <td class='${item.UF}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
+                                        ${(item.Imprensa == 1 ? `<td class="${item.UF}" data-order="0">SIM</td>` : `<td class="${item.UF}" data-order="1">NÃO</td>`)} 
                                         <td class='${item.UF}'>${item.DATA_ORIGEM}</td> 
                                         <td class='${item.UF}'>${item.updated_at}</td> 
                                         <td class='${item.UF}'>${item.statusDFI}</td> 
@@ -406,7 +404,7 @@ $( document ).ready(function() {
                                         <td class='${cidadeSemEspaco}'>${item.EMPREENDIMENTO}</td> 
                                         <td class='${cidadeSemEspaco}'>${item.TIPO_DE_DANO}</td> 
                                         ${criticidade}
-                                        <td class='${cidadeSemEspaco}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
+                                        ${(item.Imprensa == 1 ? `<td class="${cidadeSemEspaco}" data-order="0">SIM</td>` : `<td class="${cidadeSemEspaco}" data-order="1">NÃO</td>`)} 
                                         <td class='${cidadeSemEspaco}'>${item.DATA_ORIGEM}</td> 
                                         <td class='${cidadeSemEspaco}'>${item.updated_at}</td> 
                                         <td class='${cidadeSemEspaco}'>${item.statusDFI}</td> 
@@ -478,8 +476,8 @@ $( document ).ready(function() {
                                 <td class='${empreendimentoBancoDados}'>${item.CIDADE}</td> 
                                 <td class='${empreendimentoBancoDados}'>${item.EMPREENDIMENTO}</td> 
                                 <td class='${empreendimentoBancoDados}'>${item.TIPO_DE_DANO}</td> 
-                                ${criticidade} 
-                                <td class='${empreendimentoBancoDados}'>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td>
+                                ${criticidade}
+                                ${(item.Imprensa == 1 ? `<td class="${empreendimentoBancoDados}" data-order="0">SIM</td>` : `<td class="${empreendimentoBancoDados}" data-order="1">NÃO</td>`)} 
                                 <td class='${empreendimentoBancoDados}'>${item.DATA_ORIGEM}</td> 
                                 <td class='${empreendimentoBancoDados}'>${item.updated_at}</td> 
                                 <td class='${empreendimentoBancoDados}'>${item.statusDFI}</td> 

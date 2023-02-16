@@ -53,10 +53,8 @@ $( document ).ready(function() {
       let atualizacao = $.grep(grupo, function(dado){
         return dado
       })[0]
-      let timestamp = atualizacao.dataAtualizacao
-      let data = new Date(timestamp)
-      let data_formatada = data.toLocaleString("pt-BR")
-      $('#dataAtualizacaoRelatorio').html(data_formatada+' hs');
+
+      $('#dataAtualizacaoRelatorio').html(atualizacao.dataAtualizacao);
 
       grupo.forEach(function(item){
     // dados.forEach(function(item, index){
@@ -86,7 +84,7 @@ $( document ).ready(function() {
               <td>${item.EMPREENDIMENTO}</td> 
               <td>${item.TIPO_DE_DANO}</td> 
               ${criticidade} 
-              <td>${(item.Imprensa == 1 ? 'SIM' : 'NÃO')}</td> 
+              ${(item.Imprensa == 1 ? '<td data-order="0">SIM</td>' : '<td data-order="1">NÃO</td>')}</td> 
               <td>${item.DATA_ORIGEM}</td> 
               <td>${item.updated_at}</td> 
               <td>${item.statusDFI}</td> 
