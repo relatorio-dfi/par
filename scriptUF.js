@@ -332,7 +332,8 @@ $( document ).ready(function() {
                     }
                 });
                     
-                _datatable('tblDadosUF', '4', 'asc', 'imoveis_concorrencia_publica_licitacao_aberta_par', 10)
+                // _datatable('tblDadosUF', '4', 'asc', 'imoveis_concorrencia_publica_licitacao_aberta_par', 10)
+                _datatable('tblDadosUF', '4', 'asc', 10)
 
                 $(document).on('change', '#selectCidades', function(){
                     $('#tblDadosUF').DataTable().clear().destroy();
@@ -439,7 +440,8 @@ $( document ).ready(function() {
                     
                     });
                     
-                    _datatable('tblDadosUF', '4', 'asc', 'imoveis_par_dfi', 10)
+                    // _datatable('tblDadosUF', '4', 'asc', 'imoveis_par_dfi', 10)
+                    _datatable('tblDadosUF', '4', 'asc', 10)
 
                 });
             })
@@ -511,7 +513,8 @@ $( document ).ready(function() {
                 
                 });
                 
-                _datatable('tblDadosUF', '4', 'asc', 'imoveis_par_dfi', 10)
+                // _datatable('tblDadosUF', '4', 'asc', 'imoveis_par_dfi', 10)
+                _datatable('tblDadosUF', '4', 'asc', 10)
 
             });
 
