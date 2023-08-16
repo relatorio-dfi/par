@@ -29,13 +29,6 @@
 <body>
     <header>
         <nav class="navbar static-top p-2" id="corNav">
-            <!-- <div>
-                <button class="navbar-toggler" style="color:white;" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavBar" aria-controls="menuNavBar" aria-expanded="false">
-                    <span role="button">
-                        <i class="fas fa-bars m-auto" aria-hidden="true" style="color:#ffffff; font-size:18px;"></i>
-                    </span>
-                </button>
-            </div>            -->
             <p id="logo" class= "mt-3 d-sm-block">
                 Relatório DFI - Imóveis PAR
             </p>
@@ -73,120 +66,13 @@
                     <h1><i class="fas fa-1x fa-info-circle mb-1" style="color: #DB9F65;"></i></h1>
                     <h4 style="color: #3a4859">Contexto DFI - PAR:</h4>
                     <p class="pl-1 pr-1" style="color: #3a4859;">
-                        Este relatório eletrônico é destinado a consulta rápida para os casos de Danos Físicos do PAR, com a indicação dos respectivo grau de criticidade e status de atuação.
+                        Este relatório eletrônico foi desabilitado.
+                    </p>
+                    <p class="pl-1 pr-1" style="color: #3a4859;">
+                        Caso queira mais informações, entre em contato com a Equipe de Desenvolvimento CEPAT.
                     </p>
                 </div>
             </div>
-            
-            <section class="col-sm-12 container clearfix" id="containerPar">
-                <div class="row">
-                    <div class="col-md-4" style="text-align: right;">
-                        <p class="fs-5 lh-lg">Selecione o Tipo da Busca:</p>
-                    </div>
-                    <div class="col-md-4" style="text-align: center;">
-                        <select class="form-select form-select-sm form-control" id="busca">
-                            <option selected disabled>Selecione</option>
-                            <!-- <option value="cidade">CIDADE</option> -->
-                            <!-- <option value="endereco">ENDEREÇO</option> -->
-                            <option value="nome">EMPREENDIMENTO</option>
-                            <option value="uf">UF</option>
-                        </select>                        
-                    </div>
-                </div>
-
-                <div class="escolhaEstado" style="display:none">
-                    <div class="row mt-2">
-                        <div class="col-md-4" style="text-align: right;">
-                            <p class="fs-5 lh-lg">Selecione o Estado da Busca:</p>
-                        </div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <select class="form-select form-select-sm form-control" id="selectEstado" aria-label="Selecione o Estado">
-                            </select>                        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="escolhaCidade" style="display:none">
-                    <div class="row mt-2">
-                        <div class="col-md-4" style="text-align: right;">
-                            <p class="fs-5 lh-lg">Selecione a Cidade da Busca:</p>
-                        </div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <select class="form-select form-select-sm form-control opcoesCidades" id="selectCidades" aria-label="Selecione a Cidade">
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="escolhaEndereco" style="display: none;">
-                    <form id="formBusca">
-                        <div class="row mt-2">
-                            <div class="col-md-4" style="text-align: right;">
-                                <p class="fs-5 lh-lg">Digite o endereço:</p>
-                            </div>
-                            <div class="col-md-4" style="text-align: center;">
-                                <input class="form-control" type="text" id="textoBusca" placeholder="Digite os dados...">
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-primary btn-sm mt-1" id="botaoSubmitBusca" type="submit">Buscar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="escolhaEmpreendimento" style="display:none">
-                    <div class="row mt-2">
-                        <div class="col-md-4" style="text-align: right;">
-                            <p class="fs-5 lh-lg">Selecione o Empreendimento da Busca:</p>
-                        </div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <input class="form-control" list="selectEmpreendimentos" id="inputEmpreendimentos" required>
-                            <datalist id="selectEmpreendimentos">
-                            </datalist>
-                            <!-- <select class="form-select form-select-sm form-control" id="selectEmpreendimentos" aria-label="Selecione o Empreendimento">
-                            </select>                         -->
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <div class="table-responsive ml-2 mr-2" style="display:none;" id="dadosUF">
-                <!-- <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="alto" onclick="filtraCriticidade('ALTO')">
-                    <label class="custom-control-label" for="alto">ALTO</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="medio" onclick="filtraCriticidade('MEDIO')">
-                    <label class="custom-control-label" for="medio">MÉDIO</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="baixo" onclick="filtraCriticidade('BAIXO')">
-                    <label class="custom-control-label" for="baixo">BAIXO</label>
-                </div> -->
-
-                <table class="display text-center table table-hover" cellspacing="0" role="table" id="tblDadosUF">
-                    <thead role="rowgroup" class="thead-light">
-                        <tr role="row">
-                            <th role="columnheader">UF</th>
-                            <th role="columnheader">Cidade</th>
-                            <th role="columnheader">Empreendimento</th>
-                            <th role="columnheader">Tipo de Dano</th>
-                            <th role="columnheader">Criticidade</th>
-                            <th role="columnheader">Possui Demanda de Imprensa?</th>
-                            <th role="columnheader">Data<br><small>(origem)</small></th>
-                            <th role="columnheader">Data<br><small>(última atualização)</small></th>
-                            <th role="columnheader">Status</th>
-                            <th role="columnheader">Data de Conclusão<br><small>(estimada)</small></th>
-                            <th role="columnheader"></th>
-                        </tr>
-                    </thead>
-                    <tbody role="rowgroup">
-                        
-                    </tbody>
-                </table>
-            </div>
-            
         </div>
     </div>
     <footer class="mt-4" id="rodape">
